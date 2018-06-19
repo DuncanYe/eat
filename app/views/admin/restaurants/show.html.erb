@@ -1,5 +1,11 @@
 <h1><%= @restaurant.name %></h1>
 
+<% if @restaurant.image? %>
+  <%= image_tag @restaurant.image.url , width: '600px' %><br>
+<% else %>
+  <img src="https://api.fnkr.net/testimg/300x300/00CED1/FFF/?text=img+placeholder"> 
+<% end %>
+
 Opening Hours:<%= @restaurant.opening_hours %><br>
 Tel: <%= @restaurant.tel %><br>
 Address: <%= @restaurant.address %><br>

@@ -21,6 +21,8 @@ gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'hirb', '~> 0.7.3'
 gem 'ffaker'
 gem 'kaminari'
+gem 'bootstrap', '~> 4.1', '>= 4.1.1'
+gem 'jquery-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

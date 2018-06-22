@@ -1,16 +1,29 @@
-<h1><%= @restaurant.name %></h1>
+<div class="row">
+  
+  <div class="col-md-12">
+    <h1><%= @restaurant.name %></h1>
+  </div>
 
-<% if @restaurant.image? %>
-  <%= image_tag @restaurant.image.url , width: '600px' %><br>
-<% else %>
-  <img src="https://api.fnkr.net/testimg/300x300/00CED1/FFF/?text=img+placeholder"> 
-<% end %>
+  <div class="col-4 col-md-4">
+    <% if @restaurant.image? %>
+      <%= image_tag @restaurant.image.url, width: '300px' %><br>
+    <% else %>
+      <img src="https://api.fnkr.net/testimg/300x300/00CED1/FFF/?text=img+placeholder"> 
+    <% end %>
+    <br>
+    <br>
+    <div class="card card-body bg-light">
+      <ul class="lsit-unstyled">
+        <li><sring>Opening Hours:</sring><%= @restaurant.opening_hours %></li>
+        <li><sring>Tel:</sring><%= @restaurant.tel %></li>
+        <li><sring>Address:</sring><%= @restaurant.address %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-8 col-md-8">
+  <%= simple_format @restaurant.description %><br>
+  </div>
+  
+  <hr>
 
-Opening Hours:<%= @restaurant.opening_hours %><br>
-Tel: <%= @restaurant.tel %><br>
-Address: <%= @restaurant.address %><br>
-Description:<%= @restaurant.description %><br>
-
-<br>
-
-<%= link_to 'Back to index', admin_restaurants_path %>
+</div>

@@ -1,14 +1,27 @@
 <h1>後台</h1>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+    <tr>
+      <th scope="row"><%= restaurant.id %></th>
+      <td><%= restaurant.name %></td>
+      <td>
+        <%= link_to 'Show', admin_restaurant_path(restaurant) %>
+        <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %>
+        <%= link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: {confirm:"Are you sure?"} %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<ul>
-  <% @restaurants.each do |restaurant| %>
-  <li>
-    <%= restaurant.name %>
-    <%= link_to 'Show', admin_restaurant_path(restaurant) %>
-    <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %>
-    <%= link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: {confirm:"Are you sure?"} %>
-  </li>
-  <% end %>
-</ul>
-
-<%= paginate @restaurants %>
+<div class="col-md-8">
+  <%= paginate @restaurants %>
+</div>

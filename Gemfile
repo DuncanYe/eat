@@ -20,6 +20,7 @@ gem 'devise'
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'hirb', '~> 0.7.3'
 gem 'ffaker'
+gem 'kaminari'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

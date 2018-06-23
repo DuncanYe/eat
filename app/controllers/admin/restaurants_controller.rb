@@ -3,7 +3,7 @@ class Admin::RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @restaurants = Restaurant.includes(:category).page(params[:page]).per(9)
+    @restaurants = Restaurant.includes(:category).order(created_at: :desc).page(params[:page]).per(9)
   end
 
   def new
@@ -46,7 +46,7 @@ class Admin::RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-   params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description, :image)
+   params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description, :image, :category_id)
   end
 
   def find_restaurant

@@ -12,8 +12,8 @@
     <% @restaurants.each do |restaurant| %>
     <tr>
       <th scope="row"><%= restaurant.id %></th>
+      <td>[ <%= restaurant.category.name %> ]</td>
       <td><%= restaurant.name %></td>
-      <td><%= restaurant.category.name %></td>
       <td>
         <%= link_to 'Show', admin_restaurant_path(restaurant) %>
         <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %>

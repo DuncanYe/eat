@@ -2,6 +2,7 @@
   
   <div class="col-md-12">
     <h1><%= @restaurant.name %></h1>
+    <p>[<%= @restaurant.category.name %>]</p>
   </div>
 
   <div class="col-4 col-md-4">
@@ -23,7 +24,7 @@
   <div class="col-8 col-md-8">
   <%= simple_format @restaurant.description %><br>
   </div>
-  
+
   <hr>
 
 </div>

@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Category.destroy_all
+
+category_list = [
+  {name: "美式餐廳"},
+  {name: "台餐廳"},
+  {name: "吃吃餐廳"},
+  {name: "好好餐廳"},
+  {name: "美粒果餐廳"},
+  {name: "Cyberbiz餐廳"},
+  {name: "順成餐廳"},
+]
+
+category_list.each do |category|
+  Category.create(name: category[:name])
+end
+puts "Created category!"
+
+User.create(email: "root@example.com", password: "111111", role: "admin")
+puts "default admin created!"

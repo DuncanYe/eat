@@ -3,7 +3,12 @@ class Admin::CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
-    @category = Category.new
+
+    if params[:id]
+      @category = Category.find(params[:id])
+    else
+      @category = Category.new
+    end
   end
 
   def create
@@ -17,6 +22,18 @@ class Admin::CategoriesController < ApplicationController
       render :index
       # render 會直接從Create action 直接去找view，不會經過index action
       # 所以要在給 @categories = Category.all
+    end
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    if @category.update(category_params)
+      flash[:notice] = "更新分類成功"
+      redirect_to admin_categories_path
+    else
+      flash[:alert] = "分類更新有誤！！"
+      @categories = Category.all
+      render :index
     end
   end
 

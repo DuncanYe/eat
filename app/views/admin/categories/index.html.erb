@@ -1,4 +1,4 @@
-<h1>餐廳分類總表</h1>
+<h1>餐廳分類總表 [ <%= @categories.size %> ] 筆</h1>
 
 <div>
   <%= link_to 'Restaurant', admin_restaurants_path %> |
@@ -32,7 +32,10 @@
         <tr>
           <th><%= category.id %></th>
           <td><%= category.name %></td>
-          <td><%= link_to 'Edit', admin_categories_path(id: category.id) %></td>
+          <td>
+            <%= link_to 'Edit', admin_categories_path(id: category.id) %> |
+            <%= link_to 'delete', admin_category_path(category), method: :delete, data: {confirm: "確定刪除嗎？"} %>  
+          </td>
         </tr>
         <% end %>
       </tbody>

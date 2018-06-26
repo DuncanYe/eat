@@ -1,5 +1,6 @@
 class Admin::CategoriesController < ApplicationController
   before_action :authenticate_admin
+  before_action :find_category, only: [:update, :destroy]
 
   def index
     @categories = Category.all
@@ -26,7 +27,6 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
-    @category = Category.find(params[:id])
     if @category.update(category_params)
       flash[:notice] = "更新分類成功"
       redirect_to admin_categories_path
@@ -38,7 +38,6 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = Category.find(params[:id])
     @category.destroy
     flash[:alert] = "分類已刪除"
     redirect_to admin_categories_path
@@ -48,6 +47,10 @@ class Admin::CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def find_category
+    @category = Category.find(params[:id])
   end
 
 end

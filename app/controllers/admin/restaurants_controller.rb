@@ -49,7 +49,7 @@ class Admin::RestaurantsController < Admin::BaseController
   end
 
   def find_restaurant
-    @restaurant = Restaurant.find_by(params[:id])
+    @restaurant = Restaurant.find(params[:id])
   end
 
 end

@@ -1,3 +1,9 @@
+<ul class="nav nav-pills" >
+    <li class="nav-link active"><%= link_to "全部餐廳", root_path %></li>
+    <% @categories.each do |category| %>
+      <li class="nav-link"><%= link_to category.name, category_path(category) %></li>
+    <% end %>
+  </ul>
 <div class="row">
   
   <% @restaurants.each do |restaurant| %>

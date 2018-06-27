@@ -1,0 +1,11 @@
+<ul class="nav nav-pills justify-content-center" >
+    <li class="nav-item"><%= link_to "全部餐廳", root_path, class: "nav-link" %></li>
+    <% @categories.each do |category| %>
+      <li class="nav-item"><%= link_to category.name, category_path(category), class: "nav-link #{ "active" if category == @category}"  %></li>
+    <% end %>
+  </ul>
+<div class="row">
+  
+ <%= render partial: "shared/restaurant_list", locals: {restaurants: @restaurants} %>
+    
+</div>

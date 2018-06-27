@@ -28,5 +28,21 @@
 
     <hr>
 
+    <div class="container">
+      <div class="row">
+        <%= form_for [@restaurant, @comment] do |f| %>
+          
+          <div class="form-group">  
+            <%= f.label :content, "討論區" %>
+            <%= f.text_area :content, placeholder: "留言", class: "form-control" %>
+          </div>
+
+          <%= f.submit class: "btn btn-dark" %>
+          <%= f.button "Cancel", type: :reset, class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+
+
   </div>
 </div>

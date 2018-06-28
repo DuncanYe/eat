@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_save :initialize_name
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,9 +9,14 @@ class User < ApplicationRecord
     self.role == "admin"
   end
   mount_uploader :avatar, AvatarUploader
-  validates_presence_of :name
+  # validates_presence_of :name
 
   has_many :comments
 
+  def initialize_name
+    if self.name == '' || self.name == nil
+      self.name = self.email.split('@').first
+    end
+  end
 
 end

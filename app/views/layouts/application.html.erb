@@ -27,15 +27,17 @@
                 <%= link_to('登入', new_user_session_path) %>
              <% end %>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown link
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#"><%= link_to('Profile', user_path(current_user)) %></a>
-              <a class="dropdown-item" href="#"><%= link_to('修改密碼', edit_user_registration_path) %></a>
-              <a class="dropdown-item" href="#"><%= link_to('登出', destroy_user_session_path, method: :delete) %></a>
-            </div>
+          <% if user_signed_in? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown link
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#"><%= link_to('Profile', user_path(current_user)) %></a>
+                <a class="dropdown-item" href="#"><%= link_to('修改密碼', edit_user_registration_path) %></a>
+                <a class="dropdown-item" href="#"><%= link_to('登出', destroy_user_session_path, method: :delete) %></a>
+              </div>
+            <% end %>
           </li>
         </ul>
       </div>

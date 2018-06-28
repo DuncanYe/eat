@@ -21,7 +21,7 @@
           <li class="nav-item">
             <% if current_user %>
             <%= link_to 'Admin Panel', admin_root_path if @user_role = "admin" %>
-              Hi, <%= current_user.email %>
+              Hi, <%= current_user.name %>
               <% else %>
                 <%= link_to('註冊', new_user_registration_path) %> |
                 <%= link_to('登入', new_user_session_path) %>

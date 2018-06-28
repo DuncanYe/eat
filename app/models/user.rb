@@ -12,6 +12,7 @@ class User < ApplicationRecord
   # validates_presence_of :name
 
   has_many :comments
+  has_many :restaurants, through: :comments
 
   def initialize_name
     if self.name == '' || self.name == nil

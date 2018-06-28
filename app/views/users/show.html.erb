@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-5">
     <% if @user.avatar? %>
-      <%= @user.avatar %>
+      <%= image_tag @user.avatar.url, width: "300px" %>
     <% else %>
       <img src="https://api.fnkr.net/testimg/300x300/00CED1/FFF/?text=img+placeholder">
     <% end %>  
@@ -11,6 +11,6 @@
   <h1><%= @user.name %></h1>
   <p><%= @user.email %></p>
   <p><%= @user.intro %></p>
-  <button><%= link_to 'Edit', edit_user_path(current_user) %></button>
+  <%= link_to 'Edit', edit_user_path(current_user), class: "btn btn-primary" %>
   </div>
 </div>

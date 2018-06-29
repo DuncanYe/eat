@@ -1,9 +1,15 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item nav-link active"><%= link_to '首頁', restaurants_path %></li>
+  <li class="nav-item nav-link"><%= link_to '最新動態', feeds_restaurants_path %></li>
+</ul>
+<br>
 <ul class="nav nav-pills justify-content-center" >
     <li class="nav-item"><%= link_to "全部餐廳", root_path, class: "nav-link active" %></li>
     <% @categories.each do |category| %>
       <li class="nav-item"><%= link_to category.name, category_path(category), class: "nav-link"  %></li>
     <% end %>
   </ul>
+  <br>
 <div class="row">
   
  <%= render partial: "shared/restaurant_list", locals: {restaurants: @restaurants} %>

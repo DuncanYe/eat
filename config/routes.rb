@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root "restaurants#index"
   resources :restaurants, only: [:index, :show] do
     resources :comments, only: [:create, :destroy]
+    get :feeds, :on => :collection
+    get :dashboard, :on => :member
   end
   resources :categories, only: [:show]
   resources :users, only: [:show, :edit, :update]

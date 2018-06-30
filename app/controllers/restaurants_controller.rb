@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :find_restaurant, only: [:favorite, :unfavorite]
   
   def index
     @restaurants = Restaurant.order(created_at: :desc).page(params[:page]).per(9).includes(:category)
@@ -16,6 +17,23 @@ class RestaurantsController < ApplicationController
   end
 
   def dashboard
+    @restaurant = Restaurant.find(params[:id])
+  end
+
+  def favorite
+    @restaurant.favorites.create!(user: current_user)
+    redirect_back(fallback_location: root_path)
+  end
+
+  def unfavorite
+    favorite = Favorite.where(restaurant: @restaurant, user: current_user).first
+    favorite.destroy
+    redirect_back(fallback_location: root_path)
+  end
+
+  private
+
+  def find_restaurant
     @restaurant = Restaurant.find(params[:id])
   end
   

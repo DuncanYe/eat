@@ -38,7 +38,7 @@
           <p><%= simple_format comment.content %></p>
           <p class="text-muted">
             <em>About <%=time_ago_in_words (comment.created_at) %> created </em> 
-            <%= link_to " | Delete", restaurant_comment_path(@restaurant, comment), method: :delete if current_user.admin? %>
+            <%= link_to " | Delete", restaurant_comment_path(@restaurant, comment), data: {confirm: "Are you sure?"}, method: :delete if current_user.admin? %>
           </p>
 
         </div>

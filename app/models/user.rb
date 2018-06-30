@@ -20,4 +20,7 @@ class User < ApplicationRecord
     end
   end
 
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_restaurants, through: :favorites, source: :restaurants
+
 end

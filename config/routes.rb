@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get :dashboard, :on => :member
     post :favorite, :on => :member
     post :unfavorite, :on => :member
+    post :like, :on => :member
+    post :unlike, :on => :member
   end
   resources :categories, only: [:show]
   resources :users, only: [:show, :edit, :update]

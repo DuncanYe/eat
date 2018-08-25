@@ -4,3 +4,11 @@
   <li class="nav-item nav-link active"><%= link_to 'TOP10餐廳', ranking_restaurants_path %></li>
 </ul>
 <br>
+
+<% @restaurants.each do |restaurant| %>
+  <%= image_tag restaurant.image.url, width: 200 %>
+  <h4><%= restaurant.name %></h4>
+  <span><%= restaurant.favorites_count %></span>
+  <p><%= truncate(restaurant.description, length: 200) %></p>
+  <%= render partial: "shared/favorite", locals: {restaurant: restaurant} %>
+<% end %>

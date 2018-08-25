@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root "restaurants#index"
   resources :restaurants, only: [:index, :show] do
     resources :comments, only: [:create, :destroy]
+    get :ranking, :on => :collection
     get :feeds, :on => :collection
     get :dashboard, :on => :member
     post :favorite, :on => :member

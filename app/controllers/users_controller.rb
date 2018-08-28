@@ -21,6 +21,14 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def follow
+    
+  end
+
+  def unfollow
+    
+  end
+
   private
 
   def find_user

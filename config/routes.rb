@@ -12,9 +12,15 @@ Rails.application.routes.draw do
     post :unfavorite, :on => :member
     post :like, :on => :member
     post :unlike, :on => :member
+    post :follow, :on => :member
   end
   resources :categories, only: [:show]
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+    member do
+      post :follow
+      post :unfollow
+    end
+  end
 
   namespace :admin do
     resources :restaurants

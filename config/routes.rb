@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     post :unlike, :on => :member
   end
   resources :categories, only: [:show]
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update]
 
   namespace :admin do
     resources :restaurants

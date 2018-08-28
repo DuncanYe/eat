@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update]
+  before_action :find_user, only: [:show, :edit, :update, :follow, :unfollow]
   
 
   def index
@@ -22,7 +22,8 @@ class UsersController < ApplicationController
   end
 
   def follow
-    
+    current_user.followships.create(following_id: params[:user])
+    redirect_back(fallback_location: root_path)
   end
 
   def unfollow

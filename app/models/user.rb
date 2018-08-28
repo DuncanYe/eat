@@ -15,6 +15,10 @@ class User < ApplicationRecord
     end
   end
 
+  def following?(user)
+    self.followings.include?(user)
+  end
+
   mount_uploader :avatar, AvatarUploader
   # validates_presence_of :name
 

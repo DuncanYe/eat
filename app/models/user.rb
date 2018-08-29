@@ -24,7 +24,7 @@ class User < ApplicationRecord
   end
 
   def all_friends
-    (friends).uniq
+    (friends + invers_friends).uniq
   end
 
   mount_uploader :avatar, AvatarUploader
@@ -44,5 +44,8 @@ class User < ApplicationRecord
 
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+
+  has_many :invers_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :invers_friends, through: :invers_friendships, source: :user
 
 end

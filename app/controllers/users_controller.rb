@@ -32,7 +32,10 @@ class UsersController < ApplicationController
   end
 
   def unfollow
-
+    @followship = current_user.followships.where(following_id: params[:id]).first
+    @followship.destroy
+    flash[:alert] = "刪除追蹤！"
+    redirect_back(fallback_location: root_path)
   end
 
   private

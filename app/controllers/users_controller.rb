@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update, :follow, :unfollow]
+  before_action :find_user, only: [:show, :edit, :update, :follow, :unfollow, :friend_list]
   
 
   def index
@@ -36,6 +36,10 @@ class UsersController < ApplicationController
     @followship.destroy
     flash[:alert] = "刪除追蹤！"
     redirect_back(fallback_location: root_path)
+  end
+
+  def friend_list
+    @friends = @user.all_friends
   end
 
   private

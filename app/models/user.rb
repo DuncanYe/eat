@@ -23,6 +23,10 @@ class User < ApplicationRecord
     self.friends.include?(user)
   end
 
+  def all_friends
+    (friends).uniq
+  end
+
   mount_uploader :avatar, AvatarUploader
   # validates_presence_of :name
 

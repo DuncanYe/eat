@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def follow
-    @followship = current_user.followships.build(following_id: params[:user])
+    @followship = current_user.followships.build(following_id: params[:id])
     if @followship.save
       flash[:notice] = "追蹤了！"
     else

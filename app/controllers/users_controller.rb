@@ -22,12 +22,17 @@ class UsersController < ApplicationController
   end
 
   def follow
-    current_user.followships.create(following_id: params[:user])
-    redirect_back(fallback_location: root_path)
+    @followship = current_user.followships.build(following_id: params[:user])
+    if @followship.save
+      flash[:notice] = "追蹤了！"
+    else
+      flash[:alert] = @followship.errors.full_messages.to_sentence
+    end
+      redirect_back(fallback_location: root_path)
   end
 
   def unfollow
-    
+
   end
 
   private

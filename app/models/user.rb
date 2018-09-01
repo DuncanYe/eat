@@ -42,7 +42,7 @@ class User < ApplicationRecord
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
 
-  has_many :friendships, dependent: :destroy
+  has_many :friendships, dependent: :destroy, class_name: "Friendship", foreign_key: "user_id"
   has_many :friends, through: :friendships
 
   has_many :invers_friendships, class_name: "Friendship", foreign_key: "friend_id"
